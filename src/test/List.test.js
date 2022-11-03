@@ -1,7 +1,7 @@
 import React from "react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { screen } from "@testing-library/react";
+import { fireEvent, getByRole, queryAllByAltText, render, screen } from "@testing-library/react";
 import { renderWithProviders } from "./test-uitils";
 
 import List from "../components/List";
@@ -30,13 +30,22 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 const payload = [{ fact: "abcd" }];
-
-describe("List", () => {
-    test("Get A Random Fact Button Disabled After Click", async () => {
+// jest.mock("")
+describe("List Component", () => {
+    test("Get A Random Fact Button Disabled After Clicked", async () => {
         renderWithProviders(<List />);
-        userEvent.click(screen.getByText("Get A Random Fact"));
-        await screen.findByRole("heading");
+        await userEvent.click(screen.getByText("Get A Random Fact"));
         expect(screen.getByRole("button", { name: "Get A Random Fact" })).toHaveAttribute("disabled");
+        expect(screen.getByRole("button", { name: "Get A Random Fact" })).toBeInTheDocument();
+    });
+    test("Render Contents After Refresh Buuton Clicked", async () => {
+        const initialList = { listContent: { fact: "abcd" }, isLoading: false, error: null, counts: 1 };
+        renderWithProviders(<List />, { preloadedState: { list: initialList } });
+        const refreshButton = screen.getByRole("button", { name: "Refresh" });
+        await fireEvent.click(refreshButton);
+        expect(refreshButton).toBeInTheDocument();
+        expect(screen.getByText(/abcd/)).toBeInTheDocument();
+        expect(screen.getByText(/Counts: 1/)).toBeInTheDocument();
     });
 });
 

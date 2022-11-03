@@ -26,11 +26,7 @@ const List = () => {
                     Refresh
                 </button>
             </div>
-            {listContent ? (
-                <h1 className="list-content" data-testId="content">
-                    {listContent.fact}
-                </h1>
-            ) : null}
+            {listContent ? <h1 className="list-content">{listContent.fact}</h1> : null}
         </div>
     );
 };

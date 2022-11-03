@@ -8267,6 +8267,11 @@
     "indent-string" "^4.0.0"
     "strip-indent" "^3.0.0"
 
+"redux-saga-testing@^2.0.2":
+  "integrity" "sha512-8IVPTaEw0Typ9TGCAsktFrrU+I5ACbmwPmzW0DQjUgZvja0k1jP2ILnUn+fZDF1gT8c0L/Ubj//bsej5X3OkaQ=="
+  "resolved" "https://registry.npmjs.org/redux-saga-testing/-/redux-saga-testing-2.0.2.tgz"
+  "version" "2.0.2"
+
 "redux-saga@^1.2.1":
   "integrity" "sha512-fVCicLlf4hLP+KB6H7RHfZlZ8LdYckhaemXBB3wh//a2ESyz/z/l8ygxlm0OqPjS/PARdsQ2hIdAltxEB+NgvA=="
   "resolved" "https://registry.npmjs.org/redux-saga/-/redux-saga-1.2.1.tgz"
